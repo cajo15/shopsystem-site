@@ -163,6 +163,7 @@ main p {
   row-gap: 30px;
   width: 100%;
   align-items: start;
+  margin: 0 auto;
 }
 
 .resource-card {
