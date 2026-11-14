@@ -1,71 +1,58 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#080808" id="theme-color">
-
   <title>SHOP SYSTEM™</title>
-
-  <meta name="description" content="SHOP SYSTEM™ — an independent archive of visual resources, objects and inspiration.">
+  <meta name="description" content="SHOP SYSTEM™ — a resource of assets and tools for designers.">
 
   <script>
     try {
-      const savedTheme = localStorage.getItem("shopsystem-theme");
       document.documentElement.dataset.theme =
-        savedTheme === "light" ? "light" : "dark";
-    } catch (error) {
+        localStorage.getItem("shopsystem-theme") === "light" ? "light" : "dark";
+    } catch (_) {
       document.documentElement.dataset.theme = "dark";
     }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=1">
 </head>
 
 <body>
 
   <header class="site-header">
 
-    <a href="#" class="logo">SHOP SYSTEM<span>™</span></a>
+    <a class="logo" href="#" aria-label="SHOP SYSTEM home">
+      SHOP SYSTEM™
+    </a>
 
-    <div class="header-search">
-      <span class="search-icon">⌕</span>
-      <input
-        type="search"
-        id="resource-search"
-        placeholder="SEARCH..."
-        aria-label="Search resources"
-        autocomplete="off"
-      >
-    </div>
+    <label class="search-wrap">
+      <span class="visually-hidden">Search resources</span>
+      <input id="resource-search" type="search" placeholder="SEARCH" autocomplete="off">
+    </label>
 
-    <nav class="header-nav">
+    <nav class="category-nav" aria-label="Categories">
 
-      <button id="filter-toggle" class="nav-link" aria-expanded="false">
-        FILTER <span>+</span>
-      </button>
+      <button class="category-link is-active" data-category="ALL">ALL</button>
+      <button class="category-link" data-category="FILTER">FILTER</button>
+      <button class="category-link" data-category="ASSETS">ASSETS</button>
+      <button class="category-link" data-category="FONTS">FONTS</button>
+      <button class="category-link" data-category="MOCKUPS">MOCKUPS</button>
 
-      <button id="menu-toggle" class="nav-link" aria-expanded="false">
-        MENU <span>+</span>
-      </button>
-
-      <a href="mailto:hello@shopsystem.studio" class="nav-link">
-        INFO <span>↗</span>
-      </a>
+      <a class="category-link" href="mailto:hello@shopsystem.studio">INFO</a>
 
       <button
         id="theme-toggle"
-        class="nav-link theme-toggle"
+        class="theme-toggle"
         type="button"
-        aria-label="Switch to light mode"
-        aria-pressed="false"
-      >LIGHT</button>
+        aria-label="Switch to light theme"
+        aria-pressed="false">
+      </button>
 
     </nav>
 
@@ -73,126 +60,54 @@
 
   <main>
 
-    <div class="archive-bar">
-      <span>AN INDEPENDENT CREATIVE ARCHIVE</span>
-      <span id="resource-count">00 RESOURCES</span>
-    </div>
-
-    <section id="resource-grid" class="resource-grid" aria-label="Resource archive">
+    <section class="intro" aria-label="About SHOP SYSTEM">
+      <p>
+        A RESOURCE OF ASSETS AND TOOLS FOR DESIGNERS.<br>
+        CURATED BY JULIEN VAN HAVERE, FOUNDER OF<br>
+        SEARCHSYSTEM™. OPEN 24/7.
+      </p>
     </section>
 
-    <div id="empty-state" class="empty-state" hidden>
-      NO RESULTS FOUND.
-      <button id="clear-search">CLEAR SEARCH ×</button>
+    <div class="archive-status">
+      <span id="active-category-label">ALL</span>
+      <span id="resource-count"></span>
     </div>
 
-    <footer class="site-footer">
-      <span>SHOP SYSTEM™</span>
-      <span>AN ARCHIVE OF THINGS WORTH KEEPING.</span>
-      <span>2026</span>
-    </footer>
+    <section
+      id="resource-grid"
+      class="resource-grid"
+      aria-label="Resource archive">
+    </section>
+
+    <p id="empty-state" class="empty-state" hidden>
+      NO RESULTS FOUND.
+    </p>
 
   </main>
 
-  <aside id="filter-panel" class="side-panel" aria-hidden="true">
+  <!-- LIGHTBOX -->
 
-    <div class="panel-header">
-      <span>FILTER ARCHIVE</span>
-      <button class="close-panel" data-close>CLOSE ×</button>
-    </div>
+  <div id="lightbox" class="lightbox" aria-hidden="true">
 
-    <div class="panel-body">
+    <button class="lightbox-close" type="button" aria-label="Close viewer">
+      ×
+    </button>
 
-      <p class="panel-label">CATEGORIES</p>
+    <button class="lightbox-prev" type="button" aria-label="Previous media">
+      ←
+    </button>
 
-      <div class="filter-list">
+    <div class="lightbox-stage"></div>
 
-        <button class="filter-option active" data-category="ALL">
-          ALL RESOURCES <span>↗</span>
-        </button>
+    <button class="lightbox-next" type="button" aria-label="Next media">
+      →
+    </button>
 
-        <button class="filter-option" data-category="ASSETS">
-          ASSETS <span>↗</span>
-        </button>
+    <div class="lightbox-counter"></div>
 
-        <button class="filter-option" data-category="FONTS">
-          FONTS & TYPOGRAPHY <span>↗</span>
-        </button>
+  </div>
 
-        <button class="filter-option" data-category="MOCKUPS">
-          MOCKUPS <span>↗</span>
-        </button>
-
-        <button class="filter-option" data-category="TOOLS">
-          TOOLS <span>↗</span>
-        </button>
-
-        <button class="filter-option" data-category="INSPIRATION">
-          INSPIRATION <span>↗</span>
-        </button>
-
-        <button class="filter-option" data-category="OBJECTS">
-          OBJECTS <span>↗</span>
-        </button>
-
-      </div>
-
-      <div class="panel-bottom">
-        SHOP SYSTEM™ / INDEX
-      </div>
-
-    </div>
-
-  </aside>
-
-  <aside id="menu-panel" class="side-panel" aria-hidden="true">
-
-    <div class="panel-header">
-      <span>INFORMATION</span>
-      <button class="close-panel" data-close>CLOSE ×</button>
-    </div>
-
-    <div class="panel-body">
-
-      <p class="panel-label">ABOUT THE ARCHIVE</p>
-
-      <h2 class="menu-title">
-        SHOP<br>SYSTEM<span>™</span>
-      </h2>
-
-      <p class="menu-description">
-        An independent collection of visual references,
-        creative resources, digital objects and things
-        worth keeping.
-      </p>
-
-      <div class="menu-links">
-
-        <a href="#" id="menu-home">
-          01 / ALL RESOURCES <span>↗</span>
-        </a>
-
-        <a href="mailto:hello@shopsystem.studio">
-          02 / CONTACT <span>↗</span>
-        </a>
-
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-          03 / INSTAGRAM <span>↗</span>
-        </a>
-
-      </div>
-
-      <div class="panel-bottom">
-        INDEPENDENTLY CURATED / EST. 2026
-      </div>
-
-    </div>
-
-  </aside>
-
-  <div id="panel-backdrop" class="panel-backdrop"></div>
-
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=1"></script>
 
 </body>
 </html>
