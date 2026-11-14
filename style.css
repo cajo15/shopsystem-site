@@ -44,7 +44,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 55px;
+  min-height: 48px;
   padding: 0 24px;
   background: #080808;
   border-bottom: 1px solid #292929;
@@ -52,15 +52,16 @@ a {
 
 .logo {
   color: #ededed;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
 }
 
 nav a,
@@ -68,7 +69,9 @@ nav button {
   color: #999;
   background: transparent;
   border: 0;
-  font-size: 9px;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: color 0.2s ease;
 }
 
@@ -305,6 +308,7 @@ main p {
 
 @media (max-width: 600px) {
   .header {
+    min-height: 48px;
     padding: 0 18px;
   }
 
