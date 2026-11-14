@@ -453,3 +453,42 @@ main p {
 }
 
 
+
+
+
+/* SHOP SYSTEM — TUMBLR 5 COLUMN GRID */
+
+.resource-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 24px 12px !important;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.resource-card:nth-child(n) {
+  grid-column: auto !important;
+  min-width: 0;
+}
+
+.resource-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .resource-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
