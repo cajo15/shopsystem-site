@@ -155,13 +155,15 @@ main p {
   color: #fff;
 }
 
-/* RESOURCE GRID */
+/* RESOURCE GRID — COMPACT */
 
 .resource-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px 14px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 32px 16px;
   align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .resource-card {
