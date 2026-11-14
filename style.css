@@ -161,7 +161,7 @@ main p {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   column-gap: 14px;
   row-gap: 30px;
-  width: 94%;
+  width: 88%;
   margin: 0 auto;
   align-items: start;
 }
