@@ -418,3 +418,36 @@ main p {
 }
 
 
+
+
+/* SHOP SYSTEM — COMPACT GRID V4 */
+
+.resource-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 32px 14px !important;
+}
+
+.resource-card:nth-child(n) {
+  grid-column: span 1 !important;
+  min-width: 0;
+}
+
+.resource-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .resource-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+
