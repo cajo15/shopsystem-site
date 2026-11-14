@@ -251,12 +251,78 @@ main p {
    SHOP SYSTEM — EDITORIAL GRID V2
 ================================= */
 
+
+/* =================================
+   SHOP SYSTEM — EDITORIAL GRID V3
+================================= */
+
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 42px 16px;
+  gap: 36px 18px;
   align-items: start;
 }
+
+.resource-card:nth-child(1) {
+  grid-column: span 4;
+}
+
+.resource-card:nth-child(2),
+.resource-card:nth-child(3) {
+  grid-column: span 3;
+}
+
+.resource-card:nth-child(4),
+.resource-card:nth-child(5),
+.resource-card:nth-child(6) {
+  grid-column: span 3;
+}
+
+.resource-card:nth-child(n) {
+  min-width: 0;
+}
+
+.resource-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.35s ease;
+}
+
+.resource-card:hover .resource-image img {
+  opacity: 0.8;
+}
+
+.resource-meta {
+  margin-top: 10px;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.resource-card p {
+  max-width: 90%;
+  margin-top: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .resource-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 28px 12px;
+  }
+
+  .resource-card:nth-child(n) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 10px;
+  }
+}
+
 
 /* Asymmetric editorial composition */
 
