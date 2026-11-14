@@ -4,23 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#080808" id="theme-color">
 
   <title>SHOP SYSTEM™</title>
 
   <meta name="description" content="SHOP SYSTEM™ — an independent archive of visual resources, objects and inspiration.">
+
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("shopsystem-theme");
+      document.documentElement.dataset.theme =
+        savedTheme === "light" ? "light" : "dark";
+    } catch (error) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body>
-
-  <!-- HEADER -->
 
   <header class="site-header">
 
@@ -51,11 +59,17 @@
         INFO <span>↗</span>
       </a>
 
+      <button
+        id="theme-toggle"
+        class="nav-link theme-toggle"
+        type="button"
+        aria-label="Switch to light mode"
+        aria-pressed="false"
+      >LIGHT</button>
+
     </nav>
 
   </header>
-
-  <!-- MAIN CONTENT -->
 
   <main>
 
@@ -79,8 +93,6 @@
     </footer>
 
   </main>
-
-  <!-- FILTER PANEL -->
 
   <aside id="filter-panel" class="side-panel" aria-hidden="true">
 
@@ -133,8 +145,6 @@
 
   </aside>
 
-  <!-- MENU PANEL -->
-
   <aside id="menu-panel" class="side-panel" aria-hidden="true">
 
     <div class="panel-header">
@@ -180,11 +190,9 @@
 
   </aside>
 
-  <!-- BACKDROP -->
-
   <div id="panel-backdrop" class="panel-backdrop"></div>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 
 </body>
 </html>
