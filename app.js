@@ -1,537 +1,787 @@
+/* SHOP SYSTEM™ — posts are grouped archive items */
 
-/* ==========================================
-   SHOP SYSTEM™
-   RESOURCE ARCHIVE
-========================================== */
+const posts = [
 
-const resources = [
   {
-    number: "001",
-    title: "Editorial Photography",
-    category: "ASSETS",
-    description: "A collection of visual references and imagery.",
-    type: "IMAGE COLLECTION",
-    image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1000"
+    id: "001",
+    category: ["MOCKUPS"],
+    title: "PLY / SUPPLY.FAMILY / SIGN / MOCKUP / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400",
+        alt: "Minimal architectural sign mockup"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "002",
-    title: "Typography Studies",
-    category: "FONTS",
-    description: "Letterforms, typography and graphic compositions.",
-    type: "TYPE REFERENCE",
-    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1000"
+    id: "002",
+    category: ["MOCKUPS"],
+    title: "MOCKUP LAB / SUPPLY.FAMILY / SCREEN / MOCKUP / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1000",
+        alt: "Architectural screen mockup"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "003",
-    title: "Everyday Objects",
-    category: "OBJECTS",
-    description: "Objects, materials and still-life references.",
-    type: "OBJECT ARCHIVE",
-    image: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=1000"
+    id: "003",
+    category: ["MOCKUPS"],
+    title: "MOCKUP LAB / SUPPLY.FAMILY / OUTFIT / MOCKUP / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000",
+        alt: "Fashion mockup"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "004",
-    title: "Art Direction",
-    category: "INSPIRATION",
-    description: "Visual research and creative direction.",
-    type: "VISUAL RESEARCH",
-    image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=1000"
+    id: "004",
+    category: ["MOCKUPS"],
+    title: "MOCKUP LAB / SUPPLY.FAMILY / IPHONE / MOCKUP / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=1000",
+        alt: "Phone mockup"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "005",
-    title: "Graphic Inspiration",
-    category: "ASSETS",
-    description: "Graphic design and visual experimentation.",
-    type: "DESIGN REFERENCES",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000"
+    id: "005",
+    category: ["ASSETS"],
+    title: "BACK / SUPPLY.FAMILY / AIRPLANE / MOCKUP / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1400",
+        alt: "Airplane in the sky"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "006",
-    title: "Stationery Mockups",
-    category: "MOCKUPS",
-    description: "Printed matter and stationery references.",
-    type: "MOCKUP COLLECTION",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000"
+    id: "006",
+    category: ["MOCKUPS"],
+    title: "SHOWCASE MOCKUPS / SUPPLY.FAMILY / BRANDING MOCKUP / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=900",
+        alt: "Printed branding mockup"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900",
+        alt: "Book mockup"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=900",
+        alt: "Stationery mockup"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "007",
-    title: "Material Research",
-    category: "INSPIRATION",
-    description: "Textures, surfaces and material studies.",
-    type: "MATERIAL STUDY",
-    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1000"
+    id: "007",
+    category: ["ASSETS"],
+    title: "EDITORIAL / IMAGE COLLECTION / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1100",
+        alt: "Architecture detail"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1100",
+        alt: "Architecture detail"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1100&sat=-30",
+        alt: "Architectural material detail"
+      }
+    ],
+    action: "VISIT",
+    url: "#"
   },
+
   {
-    number: "008",
-    title: "Creative Workspaces",
-    category: "TOOLS",
-    description: "Creative studios, workspaces and tools.",
-    type: "STUDIO REFERENCES",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000"
+    id: "008",
+    category: ["FONTS"],
+    title: "TYPE STUDIES / LETTERFORMS / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1200",
+        alt: "Typography reference"
+      }
+    ],
+    action: "VISIT",
+    url: "#"
   },
+
   {
-    number: "009",
-    title: "Color & Composition",
-    category: "ASSETS",
-    description: "Color palettes and visual compositions.",
-    type: "VISUAL ARCHIVE",
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000"
+    id: "009",
+    category: ["ASSETS"],
+    title: "OBJECTS / MATERIAL RESEARCH / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=1000",
+        alt: "Object still life"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=1000",
+        alt: "Material still life"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "010",
-    title: "Independent Publishing",
-    category: "MOCKUPS",
-    description: "Books, magazines and printed objects.",
-    type: "PRINT REFERENCES",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1000"
+    id: "010",
+    category: ["MOCKUPS"],
+    title: "PRINT / INDEPENDENT PUBLISHING / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1000",
+        alt: "Book cover mockup"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000",
+        alt: "Writing desk"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1000",
+        alt: "Printed stationery"
+      },
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=1000",
+        alt: "Books"
+      }
+    ],
+    action: "DOWNLOAD",
+    url: "#"
   },
+
   {
-    number: "011",
-    title: "Visual Experiments",
-    category: "INSPIRATION",
-    description: "Experimental imagery and unexpected forms.",
-    type: "EXPERIMENTAL",
-    image: "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=1000"
+    id: "011",
+    category: ["ASSETS"],
+    title: "VISUAL EXPERIMENTS / 2026",
+    media: [
+      {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=1100",
+        alt: "Visual experiment"
+      }
+    ],
+    action: "VISIT",
+    url: "#"
   },
+
   {
-    number: "012",
-    title: "Digital Resources",
-    category: "TOOLS",
-    description: "Tools and resources for creative workflows.",
-    type: "DIGITAL TOOLS",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000"
+    id: "012",
+    category: ["MOCKUPS"],
+    title: "MOTION STUDY / VIDEO / 2026",
+    media: [
+      {
+        type: "video",
+        src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        poster: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1000",
+        alt: "Flower video study"
+      }
+    ],
+    action: "VISIT",
+    url: "#"
   }
+
 ];
 
 
-/* ==========================================
-   ELEMENTS
-========================================== */
+/* ELEMENTS */
 
-const grid = document.getElementById("resource-grid");
-const count = document.getElementById("resource-count");
-const searchInput = document.getElementById("resource-search");
+const grid = document.querySelector("#resource-grid");
+const searchInput = document.querySelector("#resource-search");
+const count = document.querySelector("#resource-count");
+const emptyState = document.querySelector("#empty-state");
 
-const emptyState = document.getElementById("empty-state");
-const clearSearch = document.getElementById("clear-search");
+const themeToggle = document.querySelector("#theme-toggle");
+const themeMeta = document.querySelector("#theme-color");
 
-const filterToggle = document.getElementById("filter-toggle");
-const menuToggle = document.getElementById("menu-toggle");
-
-const filterPanel = document.getElementById("filter-panel");
-const menuPanel = document.getElementById("menu-panel");
-
-const backdrop = document.getElementById("panel-backdrop");
+const lightbox = document.querySelector("#lightbox");
+const stage = lightbox.querySelector(".lightbox-stage");
+const counter = lightbox.querySelector(".lightbox-counter");
 
 
-/* ==========================================
-   STATE
-========================================== */
+/* STATE */
 
 let activeCategory = "ALL";
-let searchTerm = "";
 
-let layoutFrame = null;
+let currentMedia = [];
+let currentMediaIndex = 0;
+
+let layoutFrame = 0;
+let resizeObserver;
 
 
-/* ==========================================
-   CREATE RESOURCE CARD
-========================================== */
+/* THEME */
 
-function createCard(resource) {
+function setTheme(theme) {
+
+  document.documentElement.dataset.theme = theme;
+
+  try {
+    localStorage.setItem("shopsystem-theme", theme);
+  } catch (_) {}
+
+  themeToggle.setAttribute(
+    "aria-pressed",
+    String(theme === "light")
+  );
+
+  themeToggle.setAttribute(
+    "aria-label",
+    theme === "light"
+      ? "Switch to dark theme"
+      : "Switch to light theme"
+  );
+
+  themeMeta.content =
+    theme === "light" ? "#ffffff" : "#080808";
+
+}
+
+setTheme(
+  document.documentElement.dataset.theme || "dark"
+);
+
+themeToggle.addEventListener("click", () => {
+
+  const nextTheme =
+    document.documentElement.dataset.theme === "dark"
+      ? "light"
+      : "dark";
+
+  setTheme(nextTheme);
+
+});
+
+
+/* CREATE MEDIA */
+
+function createMediaItem(media, post, index) {
+
+  const button = document.createElement("button");
+
+  button.className = "media-item";
+  button.type = "button";
+
+  button.setAttribute(
+    "aria-label",
+    `Open media ${index + 1} from ${post.title}`
+  );
+
+  if (media.type === "video") {
+
+    const video = document.createElement("video");
+
+    video.src = media.src;
+    video.poster = media.poster || "";
+    video.muted = true;
+    video.preload = "metadata";
+    video.playsInline = true;
+
+    video.setAttribute(
+      "aria-label",
+      media.alt || post.title
+    );
+
+    button.append(video);
+
+    const play = document.createElement("span");
+
+    play.className = "play-mark";
+    play.textContent = "▶";
+
+    button.append(play);
+
+  } else {
+
+    const img = document.createElement("img");
+
+    img.src = media.src;
+    img.alt = media.alt || post.title;
+
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    img.className = "is-pixelated";
+
+    img.addEventListener("load", () => {
+
+      requestAnimationFrame(() => {
+
+        img.classList.remove("is-pixelated");
+        img.classList.add("is-loaded");
+
+      });
+
+      scheduleMasonry();
+
+    }, { once: true });
+
+    img.addEventListener(
+      "error",
+      scheduleMasonry,
+      { once: true }
+    );
+
+    button.append(img);
+
+  }
+
+  button.addEventListener("click", () => {
+
+    openLightbox(post, index);
+
+  });
+
+  return button;
+
+}
+
+
+/* CREATE POST */
+
+function createPost(post) {
+
   const card = document.createElement("article");
+
   card.className = "resource-card";
+  card.dataset.postId = post.id;
 
-  const imageWrap = document.createElement("div");
-  imageWrap.className = "card-image-wrap";
+  const media = document.createElement("div");
 
-  const image = document.createElement("img");
+  media.className = "post-media";
 
-  image.className = "card-image";
-  image.src = resource.image;
-  image.alt = resource.title;
+  media.dataset.count = String(
+    Math.min(post.media.length, 6)
+  );
 
-  // Load images immediately so masonry can measure
-  // every card before calculating its position.
-  image.loading = "eager";
-  image.decoding = "async";
+  post.media.forEach((item, i) => {
 
-  image.addEventListener("load", scheduleMasonry);
-  image.addEventListener("error", scheduleMasonry);
+    media.append(
+      createMediaItem(item, post, i)
+    );
 
-  imageWrap.appendChild(image);
+  });
 
   const info = document.createElement("div");
+
   info.className = "card-info";
 
-  const category = document.createElement("span");
-  category.className = "card-category";
-  category.textContent = resource.category;
-
   const title = document.createElement("h2");
-  title.className = "card-title";
-  title.textContent = resource.title;
 
-  const description = document.createElement("p");
-  description.className = "card-description";
-  description.textContent = resource.description;
+  title.className = "card-meta";
 
-  const bottom = document.createElement("div");
-  bottom.className = "card-bottom";
+  title.textContent =
+    `${post.category.join(" / ")} / ${post.title}`;
 
-  const type = document.createElement("span");
-  type.textContent = resource.type;
+  const action = document.createElement("a");
 
-  const arrow = document.createElement("span");
-  arrow.className = "card-arrow";
-  arrow.textContent = "↗";
+  action.className = "card-action";
+  action.textContent = post.action || "VISIT";
+  action.href = post.url || "#";
 
-  bottom.append(type, arrow);
+  if (action.href === location.href + "#") {
 
-  info.append(category, title, description, bottom);
+    action.addEventListener("click", e => {
+      e.preventDefault();
+    });
 
-  card.append(imageWrap, info);
+  }
+
+  if (/^https?:/.test(action.href)) {
+
+    action.target = "_blank";
+    action.rel = "noopener noreferrer";
+
+  }
+
+  info.append(title, action);
+
+  card.append(media, info);
 
   return card;
+
 }
 
 
-/* ==========================================
-   WAIT FOR ALL IMAGES
-========================================== */
+/* CATEGORY AND SEARCH */
 
-async function waitForImages() {
-  const images = Array.from(grid.querySelectorAll(".card-image"));
+function getVisiblePosts() {
 
-  await Promise.all(
-    images.map(image => {
-      return new Promise(resolve => {
-        if (image.complete) {
-          resolve();
-          return;
-        }
+  const term = searchInput.value.trim().toLowerCase();
 
-        image.addEventListener("load", resolve, { once: true });
-        image.addEventListener("error", resolve, { once: true });
-      });
-    })
-  );
+  return posts.filter(post => {
 
-  // Allow the browser to finish decoding image dimensions.
-  await Promise.all(
-    images.map(image => {
-      if (typeof image.decode !== "function") {
-        return Promise.resolve();
-      }
-
-      return image.decode().catch(() => {});
-    })
-  );
-}
-
-
-/* ==========================================
-   FILTER RESOURCES
-========================================== */
-
-function getFilteredResources() {
-  return resources.filter(resource => {
-    const matchesCategory =
+    const categoryMatch =
       activeCategory === "ALL" ||
-      resource.category === activeCategory;
+      post.category.includes(activeCategory);
 
-    const searchableContent = [
-      resource.title,
-      resource.category,
-      resource.description,
-      resource.type
-    ].join(" ").toLowerCase();
+    const text =
+      `${post.title} ${post.category.join(" ")}`.toLowerCase();
 
-    const matchesSearch =
-      searchableContent.includes(searchTerm);
+    return categoryMatch && (!term || text.includes(term));
 
-    return matchesCategory && matchesSearch;
   });
+
 }
 
 
-/* ==========================================
-   RENDER GRID
-========================================== */
+/* RENDER */
 
-async function renderResources() {
-  const filtered = getFilteredResources();
+function render() {
 
-  grid.replaceChildren();
-  grid.style.height = "0px";
+  const visible = getVisiblePosts();
 
-  filtered.forEach(resource => {
-    grid.appendChild(createCard(resource));
-  });
+  grid.replaceChildren(
+    ...visible.map(createPost)
+  );
 
   count.textContent =
-    `${String(filtered.length).padStart(2, "0")} RESOURCES`;
+    `${String(visible.length).padStart(2, "0")} POSTS`;
 
-  emptyState.hidden = filtered.length > 0;
+  document.querySelector(
+    "#active-category-label"
+  ).textContent = activeCategory;
 
-  await waitForImages();
+  emptyState.hidden = visible.length > 0;
 
   scheduleMasonry();
+
+  observeImages();
+
 }
 
 
-/* ==========================================
-   MASONRY LAYOUT
-========================================== */
+/* MASONRY LAYOUT */
 
-function getColumnCount() {
-  if (window.innerWidth <= 600) return 2;
-  if (window.innerWidth <= 1000) return 3;
-  return 5;
-}
+function scheduleMasonry() {
 
+  cancelAnimationFrame(layoutFrame);
 
-function getGridGap() {
-  if (window.innerWidth <= 600) return 9;
-  if (window.innerWidth <= 1000) return 11;
-  return 12;
-}
-
-
-function layoutMasonry() {
-  const cards = Array.from(
-    grid.querySelectorAll(".resource-card")
+  layoutFrame = requestAnimationFrame(
+    layoutMasonry
   );
 
+}
+
+function layoutMasonry() {
+
+  const cards = [
+    ...grid.querySelectorAll(".resource-card")
+  ];
+
   if (!cards.length) {
+
     grid.style.height = "0px";
+    return;
+
+  }
+
+  const width = grid.clientWidth;
+
+  const mobile =
+    matchMedia("(max-width: 520px)").matches;
+
+  const columns = mobile
+    ? 2
+    : matchMedia("(max-width: 760px)").matches
+      ? 3
+      : 5;
+
+  const gap = 9;
+
+  const columnWidth =
+    (width - gap * (columns - 1)) / columns;
+
+  const heights = Array(columns).fill(0);
+
+  cards.forEach(card => {
+
+    card.style.width = `${columnWidth}px`;
+
+    const shortest =
+      heights.indexOf(Math.min(...heights));
+
+    card.style.left =
+      `${shortest * (columnWidth + gap)}px`;
+
+    card.style.top =
+      `${heights[shortest]}px`;
+
+    heights[shortest] +=
+      card.offsetHeight + gap;
+
+  });
+
+  grid.style.height =
+    `${Math.max(...heights)}px`;
+
+}
+
+
+/* IMAGE SIZE OBSERVER */
+
+function observeImages() {
+
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+  }
+
+  if (!("ResizeObserver" in window)) {
     return;
   }
 
-  const columns = getColumnCount();
-  const gap = getGridGap();
+  resizeObserver = new ResizeObserver(
+    scheduleMasonry
+  );
 
-  const gutter =
-    parseFloat(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--gutter")
-    ) || 14;
+  grid.querySelectorAll(".resource-card").forEach(card => {
 
-  const gridWidth = grid.clientWidth;
+    resizeObserver.observe(card);
 
-  if (!gridWidth) return;
-
-  const availableWidth = gridWidth - gutter * 2;
-
-  const columnWidth =
-    (availableWidth - gap * (columns - 1)) / columns;
-
-  const columnHeights = Array(columns).fill(0);
-
-  // Set all card widths before measuring their heights.
-  cards.forEach(card => {
-    card.style.position = "absolute";
-    card.style.width = `${columnWidth}px`;
-    card.style.left = `${gutter}px`;
-    card.style.top = "0px";
-    card.style.transform = "none";
   });
 
-  // Force the browser to calculate the new dimensions.
-  grid.getBoundingClientRect();
-
-  // Place each card in the currently shortest column.
-  cards.forEach(card => {
-    const shortestColumn = columnHeights.indexOf(
-      Math.min(...columnHeights)
-    );
-
-    const x = shortestColumn * (columnWidth + gap);
-    const y = columnHeights[shortestColumn];
-
-    card.style.transform = `translate(${x}px, ${y}px)`;
-
-    card.classList.add("is-positioned");
-
-    columnHeights[shortestColumn] =
-      y + card.getBoundingClientRect().height + gap;
-  });
-
-  const tallestColumn = Math.max(...columnHeights);
-
-  grid.style.height = `${Math.max(0, tallestColumn - gap)}px`;
 }
 
 
-function scheduleMasonry() {
-  if (layoutFrame) {
-    cancelAnimationFrame(layoutFrame);
+/* LIGHTBOX */
+
+function openLightbox(post, index) {
+
+  currentMedia = post.media;
+  currentMediaIndex = index;
+
+  lightbox.classList.add("is-open");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add("lightbox-open");
+
+  showLightboxMedia();
+
+}
+
+function showLightboxMedia() {
+
+  const item = currentMedia[currentMediaIndex];
+
+  stage.replaceChildren();
+
+  let element;
+
+  if (item.type === "video") {
+
+    element = document.createElement("video");
+
+    element.src = item.src;
+    element.poster = item.poster || "";
+    element.controls = true;
+    element.autoplay = true;
+    element.playsInline = true;
+
+  } else {
+
+    element = document.createElement("img");
+
+    element.src = item.src;
+    element.alt = item.alt || "";
+
   }
 
-  layoutFrame = requestAnimationFrame(() => {
-    layoutMasonry();
-    layoutFrame = null;
-  });
+  stage.append(element);
+
+  counter.textContent =
+    `${String(currentMediaIndex + 1).padStart(2, "0")} / ${String(currentMedia.length).padStart(2, "0")}`;
+
+  lightbox.querySelector(
+    ".lightbox-prev"
+  ).hidden = currentMedia.length < 2;
+
+  lightbox.querySelector(
+    ".lightbox-next"
+  ).hidden = currentMedia.length < 2;
+
+}
+
+function closeLightbox() {
+
+  const video = stage.querySelector("video");
+
+  if (video) {
+    video.pause();
+  }
+
+  lightbox.classList.remove("is-open");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove("lightbox-open");
+
+  stage.replaceChildren();
+
+}
+
+function stepLightbox(direction) {
+
+  if (!currentMedia.length) {
+    return;
+  }
+
+  currentMediaIndex =
+    (currentMediaIndex + direction + currentMedia.length)
+    % currentMedia.length;
+
+  showLightboxMedia();
+
 }
 
 
-/* ==========================================
-   SEARCH
-========================================== */
+/* LIGHTBOX CONTROLS */
 
-searchInput.addEventListener("input", event => {
-  searchTerm = event.target.value.trim().toLowerCase();
-  renderResources();
+lightbox.querySelector(
+  ".lightbox-close"
+).addEventListener("click", closeLightbox);
+
+lightbox.querySelector(
+  ".lightbox-prev"
+).addEventListener("click", () => {
+  stepLightbox(-1);
+});
+
+lightbox.querySelector(
+  ".lightbox-next"
+).addEventListener("click", () => {
+  stepLightbox(1);
+});
+
+lightbox.addEventListener("click", e => {
+
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+
 });
 
 
-clearSearch.addEventListener("click", () => {
-  searchInput.value = "";
-  searchTerm = "";
-  activeCategory = "ALL";
+/* KEYBOARD CONTROLS */
 
-  updateActiveFilters();
-  renderResources();
+document.addEventListener("keydown", e => {
+
+  if (!lightbox.classList.contains("is-open")) {
+    return;
+  }
+
+  if (e.key === "Escape") {
+    closeLightbox();
+  }
+
+  if (e.key === "ArrowLeft") {
+    stepLightbox(-1);
+  }
+
+  if (e.key === "ArrowRight") {
+    stepLightbox(1);
+  }
+
 });
 
 
-/* ==========================================
-   CATEGORY FILTERS
-========================================== */
+/* CATEGORY BUTTONS */
 
-function updateActiveFilters() {
-  document.querySelectorAll(".filter-option").forEach(button => {
-    const active =
-      button.dataset.category === activeCategory;
+document.querySelectorAll(
+  "[data-category]"
+).forEach(button => {
 
-    button.classList.toggle("active", active);
-
-    button.setAttribute(
-      "aria-pressed",
-      String(active)
-    );
-  });
-}
-
-
-document.querySelectorAll(".filter-option").forEach(button => {
   button.addEventListener("click", () => {
+
     activeCategory = button.dataset.category;
 
-    updateActiveFilters();
-    renderResources();
-    closePanels();
+    document.querySelectorAll(
+      ".category-link[data-category]"
+    ).forEach(link => {
+
+      link.classList.toggle(
+        "is-active",
+        link === button
+      );
+
+    });
+
+    render();
+
   });
+
 });
 
 
-/* ==========================================
-   PANELS
-========================================== */
+/* SEARCH */
 
-function closePanels() {
-  filterPanel.classList.remove("visible");
-  menuPanel.classList.remove("visible");
-  backdrop.classList.remove("visible");
-
-  filterPanel.setAttribute("aria-hidden", "true");
-  menuPanel.setAttribute("aria-hidden", "true");
-
-  filterToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-expanded", "false");
-
-  document.body.classList.remove("panel-open");
-}
+searchInput.addEventListener(
+  "input",
+  render
+);
 
 
-function openPanel(panel) {
-  closePanels();
+/* RESIZE */
 
-  panel.classList.add("visible");
-  backdrop.classList.add("visible");
+window.addEventListener(
+  "resize",
+  scheduleMasonry
+);
 
-  panel.setAttribute("aria-hidden", "false");
-
-  document.body.classList.add("panel-open");
-
-  if (panel === filterPanel) {
-    filterToggle.setAttribute("aria-expanded", "true");
-  }
-
-  if (panel === menuPanel) {
-    menuToggle.setAttribute("aria-expanded", "true");
-  }
-}
+window.addEventListener(
+  "load",
+  scheduleMasonry
+);
 
 
-filterToggle.addEventListener("click", () => {
-  if (filterPanel.classList.contains("visible")) {
-    closePanels();
-  } else {
-    openPanel(filterPanel);
-  }
-});
+/* INITIALIZE */
 
-
-menuToggle.addEventListener("click", () => {
-  if (menuPanel.classList.contains("visible")) {
-    closePanels();
-  } else {
-    openPanel(menuPanel);
-  }
-});
-
-
-backdrop.addEventListener("click", closePanels);
-
-
-document.querySelectorAll("[data-close]").forEach(button => {
-  button.addEventListener("click", closePanels);
-});
-
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closePanels();
-  }
-});
-
-
-/* ==========================================
-   MENU HOME
-========================================== */
-
-document.getElementById("menu-home").addEventListener("click", event => {
-  event.preventDefault();
-
-  activeCategory = "ALL";
-  searchTerm = "";
-
-  searchInput.value = "";
-
-  updateActiveFilters();
-  renderResources();
-  closePanels();
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
-
-
-/* ==========================================
-   RESPONSIVE LAYOUT
-========================================== */
-
-window.addEventListener("resize", scheduleMasonry);
-
-window.addEventListener("load", scheduleMasonry);
-
-
-/* ==========================================
-   INITIALIZE
-========================================== */
-
-updateActiveFilters();
-renderResources();
+render();
