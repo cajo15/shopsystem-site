@@ -1,10 +1,7 @@
 
-/* ==========================================
-   SHOP SYSTEM
-   Tumblr-inspired resource archive
-========================================== */
-
-/* RESET */
+/* =====================================
+   SHOP SYSTEM™ — MAIN STYLESHEET
+===================================== */
 
 * {
   box-sizing: border-box;
@@ -16,14 +13,21 @@ html {
   scroll-behavior: smooth;
 }
 
-/* BASE */
-
 body {
   background: #080808;
   color: #ededed;
   font-family: "Courier New", monospace;
   font-size: 10px;
   letter-spacing: 0.02em;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
@@ -36,7 +40,7 @@ a {
 .header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,6 +51,7 @@ a {
 }
 
 .logo {
+  color: #ededed;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0.04em;
@@ -58,23 +63,36 @@ nav {
   gap: 24px;
 }
 
-nav a {
-  color: #aaa;
+nav a,
+nav button {
+  color: #999;
+  background: transparent;
+  border: 0;
+  font-size: 9px;
   transition: color 0.2s ease;
 }
 
-nav a:hover {
-  color: white;
+nav a:hover,
+nav button:hover {
+  color: #fff;
 }
 
 /* MAIN CONTENT */
 
 main {
-  padding: 30px 24px;
+  width: 100%;
+  padding: 28px 24px 60px;
+}
+
+.intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 26px;
 }
 
 h1 {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-size: 13px;
   font-weight: normal;
   letter-spacing: 0.08em;
@@ -82,15 +100,6 @@ h1 {
 
 main p {
   color: #888;
-}
-
-/* HOMEPAGE INTRO */
-
-.intro {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 28px;
 }
 
 .resource-count {
@@ -106,7 +115,7 @@ main p {
   justify-content: space-between;
   gap: 20px;
   padding: 12px 0;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   border-top: 1px solid #292929;
   border-bottom: 1px solid #292929;
 }
@@ -118,7 +127,6 @@ main p {
   background: transparent;
   border: 0;
   outline: none;
-  font: inherit;
   font-size: 9px;
 }
 
@@ -137,9 +145,7 @@ main p {
   color: #777;
   background: transparent;
   border: 0;
-  font: inherit;
   font-size: 9px;
-  cursor: pointer;
   transition: color 0.2s ease;
 }
 
@@ -148,45 +154,38 @@ main p {
   color: #fff;
 }
 
-/* ==========================================
-   RESOURCE GRID
-   SHOP SYSTEM — FIVE COLUMNS
-========================================== */
+/* RESOURCE GRID — FIVE COLUMNS */
 
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   column-gap: 14px;
-  row-gap: 28px;
+  row-gap: 30px;
   width: 100%;
   align-items: start;
 }
 
 .resource-card {
   min-width: 0;
-  width: 100%;
 }
 
 .resource-image {
   width: 100%;
   overflow: hidden;
-  background: #151515;
+  background: #111;
 }
 
 .resource-image img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  transition: opacity 0.3s ease, transform 0.5s ease;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
 }
 
 .resource-card:hover .resource-image img {
   opacity: 0.78;
-  transform: scale(1.025);
 }
-
-/* RESOURCE METADATA */
 
 .resource-meta {
   display: flex;
@@ -207,10 +206,8 @@ main p {
   margin-top: 5px;
   color: #777;
   font-size: 8px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
-
-/* EMPTY SEARCH STATE */
 
 .empty-state {
   grid-column: 1 / -1;
@@ -218,46 +215,102 @@ main p {
   color: #888;
 }
 
-/* ==========================================
-   RESPONSIVE LAYOUT
-========================================== */
+/* FILTER AND MENU PANELS */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: none;
+  overflow-y: auto;
+  padding: 28px 24px;
+  background: #080808;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #292929;
+}
+
+.overlay-header button,
+.close-button {
+  color: #aaa;
+  background: transparent;
+  border: 0;
+  font-size: 10px;
+}
+
+.overlay-header button:hover,
+.close-button:hover {
+  color: #fff;
+}
+
+.taxonomy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding-top: 24px;
+}
+
+.taxonomy button {
+  color: #888;
+  background: transparent;
+  border: 0;
+  font-size: 10px;
+}
+
+.taxonomy button:hover,
+.taxonomy button.active {
+  color: #fff;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 28px;
+}
+
+.menu-content a {
+  width: fit-content;
+  color: #aaa;
+  font-size: 11px;
+}
+
+.menu-content a:hover {
+  color: #fff;
+}
 
 /* TABLET */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .resource-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 12px;
-    row-gap: 25px;
+    row-gap: 26px;
   }
 }
 
 /* MOBILE */
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .header {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
-    padding: 18px;
+    padding: 0 18px;
   }
 
   nav {
-    flex-wrap: wrap;
     gap: 14px;
   }
 
   main {
-    padding: 24px 18px;
-  }
-
-  .toolbar {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  #search {
-    width: 100%;
+    padding: 22px 18px 40px;
   }
 
   .intro {
@@ -265,12 +318,24 @@ main p {
     flex-direction: column;
     gap: 12px;
   }
-}
 
-@media (max-width: 600px) {
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #search {
+    width: 100%;
+  }
+
   .resource-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 10px;
-    row-gap: 22px;
+    row-gap: 24px;
+  }
+
+  .overlay {
+    padding: 22px 18px;
   }
 }
