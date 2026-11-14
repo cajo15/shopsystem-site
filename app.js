@@ -73,6 +73,65 @@ const search = document.querySelector("#search");
 const filterButtons = document.querySelectorAll(".filter");
 
 let activeCategory = "ALL";
+let layoutFrame = null;
+
+function getColumnCount() {
+  if (window.innerWidth <= 600) return 2;
+  if (window.innerWidth <= 1000) return 3;
+  return 5;
+}
+
+function layoutMasonry() {
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll(".resource-card"));
+
+  if (!cards.length) {
+    grid.style.height = "0px";
+    return;
+  }
+
+  const columns = getColumnCount();
+  const gap = window.innerWidth <= 600 ? 10 :
+              window.innerWidth <= 1000 ? 12 : 14;
+
+  const gridWidth = grid.clientWidth;
+  const cardWidth = (gridWidth - gap * (columns - 1)) / columns;
+  const columnHeights = Array(columns).fill(0);
+
+  cards.forEach(card => {
+    card.style.width = `${cardWidth}px`;
+  });
+
+  cards.forEach(card => {
+    let shortestColumn = 0;
+
+    for (let i = 1; i < columns; i++) {
+      if (columnHeights[i] < columnHeights[shortestColumn]) {
+        shortestColumn = i;
+      }
+    }
+
+    const left = shortestColumn * (cardWidth + gap);
+    const top = columnHeights[shortestColumn];
+
+    card.style.left = `${left}px`;
+    card.style.top = `${top}px`;
+
+    columnHeights[shortestColumn] += card.offsetHeight + gap;
+  });
+
+  grid.style.height = `${Math.max(...columnHeights)}px`;
+}
+
+function scheduleMasonry() {
+  if (layoutFrame) cancelAnimationFrame(layoutFrame);
+
+  layoutFrame = requestAnimationFrame(() => {
+    layoutMasonry();
+    layoutFrame = null;
+  });
+}
 
 function renderResources() {
   const term = search.value.toLowerCase().trim();
@@ -92,7 +151,7 @@ function renderResources() {
   });
 
   grid.innerHTML = filtered.length
-    ? filtered.map((resource, index) => `
+    ? filtered.map(resource => `
       <article class="resource-card">
         <a href="#" class="resource-link" aria-label="View ${resource.title}">
           <div class="resource-image">
@@ -107,6 +166,13 @@ function renderResources() {
       </article>
     `).join("")
     : `<p class="empty-state">NO RESOURCES FOUND.</p>`;
+
+  grid.querySelectorAll("img").forEach(img => {
+    img.addEventListener("load", scheduleMasonry);
+    img.addEventListener("error", scheduleMasonry);
+  });
+
+  scheduleMasonry();
 }
 
 search.addEventListener("input", renderResources);
@@ -115,19 +181,15 @@ filterButtons.forEach(button => {
   button.addEventListener("click", () => {
     activeCategory = button.dataset.category;
 
-    filterButtons.forEach(item => item.classList.remove("active"));
-    button.classList.add("active");
+    filterButtons.forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
 
     renderResources();
   });
 });
 
-renderResources();
-
-
-
-
-// OPEN AND CLOSE PANELS
+// FILTER AND MENU PANELS
 
 const filterToggle = document.querySelector("#filter-toggle");
 const menuToggle = document.querySelector("#menu-toggle");
@@ -137,16 +199,31 @@ const menuPanel = document.querySelector("#menu-panel");
 function closePanels() {
   filterPanel.classList.remove("visible");
   menuPanel.classList.remove("visible");
+
+  filterToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-expanded", "false");
 }
 
 filterToggle.addEventListener("click", () => {
-  menuPanel.classList.remove("visible");
-  filterPanel.classList.toggle("visible");
+  const shouldOpen = !filterPanel.classList.contains("visible");
+
+  closePanels();
+
+  if (shouldOpen) {
+    filterPanel.classList.add("visible");
+    filterToggle.setAttribute("aria-expanded", "true");
+  }
 });
 
 menuToggle.addEventListener("click", () => {
-  filterPanel.classList.remove("visible");
-  menuPanel.classList.toggle("visible");
+  const shouldOpen = !menuPanel.classList.contains("visible");
+
+  closePanels();
+
+  if (shouldOpen) {
+    menuPanel.classList.add("visible");
+    menuToggle.setAttribute("aria-expanded", "true");
+  }
 });
 
 document.querySelectorAll("[data-close]").forEach(button => {
@@ -171,9 +248,12 @@ document.querySelectorAll("[data-taxonomy]").forEach(button => {
   });
 });
 
-// ESCAPE KEY CLOSES PANELS
+// KEYBOARD AND RESIZE
 
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") closePanels();
 });
 
+window.addEventListener("resize", scheduleMasonry);
+
+renderResources();
