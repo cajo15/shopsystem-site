@@ -1,30 +1,176 @@
 
 /* ==========================================
-   SHOP SYSTEM — RESOURCE GRID
-   Tumblr-inspired editorial layout
+   SHOP SYSTEM
+   Tumblr-inspired resource archive
+========================================== */
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* BASE */
+
+body {
+  background: #080808;
+  color: #ededed;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 55px;
+  padding: 0 24px;
+  background: #080808;
+  border-bottom: 1px solid #292929;
+}
+
+.logo {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+nav a {
+  color: #aaa;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: white;
+}
+
+/* MAIN CONTENT */
+
+main {
+  padding: 30px 24px;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+}
+
+main p {
+  color: #888;
+}
+
+/* HOMEPAGE INTRO */
+
+.intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.resource-count {
+  color: #777;
+  font-size: 9px;
+}
+
+/* SEARCH AND FILTERS */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  margin-bottom: 18px;
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+}
+
+#search {
+  width: 220px;
+  padding: 8px 0;
+  color: #eee;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font: inherit;
+  font-size: 9px;
+}
+
+#search::placeholder {
+  color: #777;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.filter {
+  padding: 5px 0;
+  color: #777;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.filter:hover,
+.filter.active {
+  color: #fff;
+}
+
+/* ==========================================
+   RESOURCE GRID
+   SHOP SYSTEM — FIVE COLUMNS
 ========================================== */
 
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   column-gap: 14px;
-  row-gap: 30px;
+  row-gap: 28px;
   width: 100%;
   align-items: start;
 }
-
-/* Resource cards */
 
 .resource-card {
   min-width: 0;
   width: 100%;
 }
 
-/* Images */
-
 .resource-image {
   width: 100%;
   overflow: hidden;
+  background: #151515;
 }
 
 .resource-image img {
@@ -32,29 +178,53 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-}
-
-/* Image hover */
-
-.resource-image img {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.5s ease;
 }
 
 .resource-card:hover .resource-image img {
-  opacity: 0.82;
+  opacity: 0.78;
+  transform: scale(1.025);
 }
 
-/* Metadata */
+/* RESOURCE METADATA */
 
 .resource-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
   margin-top: 9px;
-  font-size: 9px;
+  color: #ddd;
+  font-size: 8px;
   line-height: 1.5;
 }
 
-/* Tablet */
+.resource-meta span:last-child {
+  flex-shrink: 0;
+  color: #777;
+}
 
-@media (max-width: 1000px) {
+.resource-card p {
+  margin-top: 5px;
+  color: #777;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+/* EMPTY SEARCH STATE */
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 40px 0;
+  color: #888;
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUT
+========================================== */
+
+/* TABLET */
+
+@media (max-width: 900px) {
   .resource-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 12px;
@@ -62,7 +232,40 @@
   }
 }
 
-/* Mobile */
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 18px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  main {
+    padding: 24px 18px;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  #search {
+    width: 100%;
+  }
+
+  .intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
 
 @media (max-width: 600px) {
   .resource-grid {
