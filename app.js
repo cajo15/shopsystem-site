@@ -212,11 +212,6 @@ function renderResources() {
 
 /* MASONRY LAYOUT */
 
-function getColumnCount() {
-  if (window.innerWidth <= 600) return 2;
-  if (window.innerWidth <= 1000) return 3;
-  return 5;
-}
 
 function layoutMasonry() {
   const cards = Array.from(grid.querySelectorAll(".resource-card"));
@@ -235,14 +230,22 @@ function layoutMasonry() {
         ? 16
         : 13;
 
-  const availableWidth = grid.clientWidth;
-  const columnWidth = (availableWidth - gap * (columns - 1)) / columns;
+  // Use the actual inner content width, excluding horizontal padding.
+  const styles = window.getComputedStyle(grid);
+  const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+  const paddingRight = parseFloat(styles.paddingRight) || 0;
+
+  const contentWidth =
+    grid.clientWidth - paddingLeft - paddingRight;
+
+  const columnWidth =
+    (contentWidth - gap * (columns - 1)) / columns;
 
   const columnHeights = Array(columns).fill(0);
 
   cards.forEach(card => {
     card.style.width = `${columnWidth}px`;
-    card.style.left = "0px";
+    card.style.left = `${paddingLeft}px`;
     card.style.top = "0px";
   });
 
@@ -257,22 +260,12 @@ function layoutMasonry() {
     card.style.transform = `translate(${x}px, ${y}px)`;
     card.classList.add("is-positioned");
 
-    columnHeights[shortestColumn] = y + card.offsetHeight + gap;
+    columnHeights[shortestColumn] =
+      y + card.offsetHeight + gap;
   });
 
   grid.style.height =
     `${Math.max(...columnHeights) - gap}px`;
-}
-
-function scheduleMasonry() {
-  if (resizeFrame) {
-    cancelAnimationFrame(resizeFrame);
-  }
-
-  resizeFrame = requestAnimationFrame(() => {
-    layoutMasonry();
-    resizeFrame = null;
-  });
 }
 
 /* SEARCH */
