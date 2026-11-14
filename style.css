@@ -88,3 +88,159 @@ main p {
     padding: 24px 18px;
   }
 }
+
+
+
+/* HOMEPAGE INTRO */
+
+.intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.resource-count {
+  color: #777;
+  font-size: 9px;
+}
+
+/* SEARCH AND FILTERS */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  margin-bottom: 18px;
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+}
+
+#search {
+  width: 220px;
+  padding: 8px 0;
+  color: #eee;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font: inherit;
+  font-size: 9px;
+}
+
+#search::placeholder {
+  color: #777;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.filter {
+  padding: 5px 0;
+  color: #777;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.filter:hover,
+.filter.active {
+  color: #fff;
+}
+
+/* RESOURCE GRID */
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 14px;
+  align-items: start;
+}
+
+.resource-card {
+  min-width: 0;
+}
+
+.resource-image {
+  width: 100%;
+  overflow: hidden;
+  background: #151515;
+}
+
+.resource-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.resource-card:hover .resource-image img {
+  opacity: 0.78;
+  transform: scale(1.025);
+}
+
+.resource-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 9px;
+  color: #ddd;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.resource-meta span:last-child {
+  flex-shrink: 0;
+  color: #777;
+}
+
+.resource-card p {
+  margin-top: 5px;
+  color: #777;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 40px 0;
+  color: #888;
+}
+
+/* RESPONSIVE GRID */
+
+@media (max-width: 900px) {
+  .resource-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  #search {
+    width: 100%;
+  }
+
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 10px;
+  }
+
+  .intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
