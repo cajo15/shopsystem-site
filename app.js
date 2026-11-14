@@ -1,4 +1,8 @@
 
+/* =====================================
+   SHOP SYSTEM™ — RESOURCE ARCHIVE
+===================================== */
+
 const resources = [
   {
     title: "EDITORIAL PHOTO COLLECTION",
@@ -56,7 +60,10 @@ app.innerHTML = `
   </div>
 
   <div class="toolbar">
-    <input id="search" type="search" placeholder="SEARCH RESOURCES..." aria-label="Search resources">
+    <input id="search" type="search"
+      placeholder="SEARCH RESOURCES..."
+      aria-label="Search resources">
+
     <div class="filters">
       <button class="filter active" data-category="ALL">ALL</button>
       <button class="filter" data-category="ASSETS">ASSETS</button>
@@ -81,10 +88,14 @@ function getColumnCount() {
   return 5;
 }
 
+/* MASONRY POSITIONING */
+
 function layoutMasonry() {
   if (!grid) return;
 
-  const cards = Array.from(grid.querySelectorAll(".resource-card"));
+  const cards = Array.from(
+    grid.querySelectorAll(".resource-card")
+  );
 
   if (!cards.length) {
     grid.style.height = "0px";
@@ -92,11 +103,17 @@ function layoutMasonry() {
   }
 
   const columns = getColumnCount();
-  const gap = window.innerWidth <= 600 ? 10 :
-              window.innerWidth <= 1000 ? 12 : 14;
+
+  const gap = window.innerWidth <= 600
+    ? 10
+    : window.innerWidth <= 1000
+      ? 12
+      : 14;
 
   const gridWidth = grid.clientWidth;
-  const cardWidth = (gridWidth - gap * (columns - 1)) / columns;
+  const cardWidth =
+    (gridWidth - gap * (columns - 1)) / columns;
+
   const columnHeights = Array(columns).fill(0);
 
   cards.forEach(card => {
@@ -107,7 +124,10 @@ function layoutMasonry() {
     let shortestColumn = 0;
 
     for (let i = 1; i < columns; i++) {
-      if (columnHeights[i] < columnHeights[shortestColumn]) {
+      if (
+        columnHeights[i] <
+        columnHeights[shortestColumn]
+      ) {
         shortestColumn = i;
       }
     }
@@ -118,14 +138,17 @@ function layoutMasonry() {
     card.style.left = `${left}px`;
     card.style.top = `${top}px`;
 
-    columnHeights[shortestColumn] += card.offsetHeight + gap;
+    columnHeights[shortestColumn] +=
+      card.offsetHeight + gap;
   });
 
   grid.style.height = `${Math.max(...columnHeights)}px`;
 }
 
 function scheduleMasonry() {
-  if (layoutFrame) cancelAnimationFrame(layoutFrame);
+  if (layoutFrame) {
+    cancelAnimationFrame(layoutFrame);
+  }
 
   layoutFrame = requestAnimationFrame(() => {
     layoutMasonry();
@@ -133,12 +156,15 @@ function scheduleMasonry() {
   });
 }
 
+/* RESOURCE RENDERING */
+
 function renderResources() {
   const term = search.value.toLowerCase().trim();
 
   const filtered = resources.filter(resource => {
     const matchesCategory =
-      activeCategory === "ALL" || resource.category === activeCategory;
+      activeCategory === "ALL" ||
+      resource.category === activeCategory;
 
     const searchableText = [
       resource.title,
@@ -147,90 +173,137 @@ function renderResources() {
       resource.description
     ].join(" ").toLowerCase();
 
-    return matchesCategory && searchableText.includes(term);
+    return matchesCategory &&
+      searchableText.includes(term);
   });
 
   grid.innerHTML = filtered.length
     ? filtered.map(resource => `
-      <article class="resource-card">
-        <a href="#" class="resource-link" aria-label="View ${resource.title}">
-          <div class="resource-image">
-            <img src="${resource.image}" alt="${resource.title}" loading="lazy">
-          </div>
-          <div class="resource-meta">
-            <span>${resource.title}</span>
-            <span>${resource.category}</span>
-          </div>
-          <p>${resource.description}</p>
-        </a>
-      </article>
-    `).join("")
+        <article class="resource-card">
+          <a href="#"
+            class="resource-link"
+            aria-label="View ${resource.title}">
+
+            <div class="resource-image">
+              <img
+                src="${resource.image}"
+                alt="${resource.title}"
+                loading="lazy">
+            </div>
+
+            <div class="resource-meta">
+              <span>${resource.title}</span>
+              <span>${resource.category}</span>
+            </div>
+
+            <p>${resource.description}</p>
+
+          </a>
+        </article>
+      `).join("")
     : `<p class="empty-state">NO RESOURCES FOUND.</p>`;
 
   grid.querySelectorAll("img").forEach(img => {
     img.addEventListener("load", scheduleMasonry);
     img.addEventListener("error", scheduleMasonry);
+
+    if (img.complete) {
+      scheduleMasonry();
+    }
   });
 
   scheduleMasonry();
 }
 
+/* SEARCH */
+
 search.addEventListener("input", renderResources);
+
+/* CATEGORY FILTERS */
 
 filterButtons.forEach(button => {
   button.addEventListener("click", () => {
     activeCategory = button.dataset.category;
 
     filterButtons.forEach(item => {
-      item.classList.toggle("active", item === button);
+      item.classList.toggle(
+        "active",
+        item === button
+      );
     });
 
     renderResources();
   });
 });
 
-// FILTER AND MENU PANELS
+/* FILTER AND MENU PANELS */
 
-const filterToggle = document.querySelector("#filter-toggle");
-const menuToggle = document.querySelector("#menu-toggle");
-const filterPanel = document.querySelector("#filter-panel");
-const menuPanel = document.querySelector("#menu-panel");
+const filterToggle =
+  document.querySelector("#filter-toggle");
+
+const menuToggle =
+  document.querySelector("#menu-toggle");
+
+const filterPanel =
+  document.querySelector("#filter-panel");
+
+const menuPanel =
+  document.querySelector("#menu-panel");
 
 function closePanels() {
   filterPanel.classList.remove("visible");
   menuPanel.classList.remove("visible");
 
-  filterToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-expanded", "false");
+  filterToggle.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  menuToggle.setAttribute(
+    "aria-expanded",
+    "false"
+  );
 }
 
 filterToggle.addEventListener("click", () => {
-  const shouldOpen = !filterPanel.classList.contains("visible");
+  const shouldOpen =
+    !filterPanel.classList.contains("visible");
 
   closePanels();
 
   if (shouldOpen) {
     filterPanel.classList.add("visible");
-    filterToggle.setAttribute("aria-expanded", "true");
+
+    filterToggle.setAttribute(
+      "aria-expanded",
+      "true"
+    );
   }
 });
 
 menuToggle.addEventListener("click", () => {
-  const shouldOpen = !menuPanel.classList.contains("visible");
+  const shouldOpen =
+    !menuPanel.classList.contains("visible");
 
   closePanels();
 
   if (shouldOpen) {
     menuPanel.classList.add("visible");
-    menuToggle.setAttribute("aria-expanded", "true");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      "true"
+    );
   }
 });
+
+/* CLOSE BUTTONS */
 
 document.querySelectorAll("[data-close]").forEach(button => {
   button.addEventListener("click", closePanels);
 });
 
-// TAXONOMY FILTERS
+/* TAXONOMY FILTERS */
 
 document.querySelectorAll("[data-taxonomy]").forEach(button => {
   button.addEventListener("click", () => {
@@ -248,12 +321,18 @@ document.querySelectorAll("[data-taxonomy]").forEach(button => {
   });
 });
 
-// KEYBOARD AND RESIZE
+/* KEYBOARD */
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closePanels();
+  if (event.key === "Escape") {
+    closePanels();
+  }
 });
 
+/* RESPONSIVE MASONRY */
+
 window.addEventListener("resize", scheduleMasonry);
+
+/* INITIALIZE */
 
 renderResources();
