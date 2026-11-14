@@ -1,106 +1,130 @@
 
+/* ==========================================
+   SHOP SYSTEM™
+   RESOURCE ARCHIVE
+========================================== */
+
 const resources = [
+
   {
-    title: "Editorial Photo Collection",
-    category: "ASSETS",
-    description: "A visual collection of atmospheric editorial photography.",
-    image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=900",
     number: "001",
-    type: "IMAGE ARCHIVE"
+    title: "Editorial Photography",
+    category: "ASSETS",
+    description: "A collection of visual references and imagery.",
+    type: "IMAGE COLLECTION",
+    image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1000"
   },
+
   {
-    title: "Minimal Typography",
-    category: "FONTS",
-    description: "Typographic references, lettering and graphic compositions.",
-    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=900",
     number: "002",
-    type: "TYPE STUDY"
+    title: "Typography Studies",
+    category: "FONTS",
+    description: "Letterforms, typography and graphic compositions.",
+    type: "TYPE REFERENCE",
+    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1000"
   },
+
   {
+    number: "003",
     title: "Everyday Objects",
     category: "OBJECTS",
-    description: "Objects, forms, materials and still-life references.",
-    image: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=900",
-    number: "003",
-    type: "OBJECT STUDY"
+    description: "Objects, materials and still-life references.",
+    type: "OBJECT ARCHIVE",
+    image: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=1000"
   },
+
   {
-    title: "Art Direction References",
-    category: "INSPIRATION",
-    description: "A collection of visual ideas and art direction references.",
-    image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=900",
     number: "004",
-    type: "VISUAL RESEARCH"
+    title: "Art Direction",
+    category: "INSPIRATION",
+    description: "Visual research and creative direction.",
+    type: "VISUAL RESEARCH",
+    image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=1000"
   },
+
   {
+    number: "005",
     title: "Graphic Inspiration",
     category: "ASSETS",
-    description: "Graphic design, color, composition and visual experiments.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=900",
-    number: "005",
-    type: "DESIGN ARCHIVE"
+    description: "Graphic design and visual experimentation.",
+    type: "DESIGN REFERENCES",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000"
   },
+
   {
-    title: "Stationery Objects",
-    category: "MOCKUPS",
-    description: "Printed matter, paper goods and stationery references.",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900",
     number: "006",
-    type: "MOCKUP"
+    title: "Stationery Mockups",
+    category: "MOCKUPS",
+    description: "Printed matter and stationery references.",
+    type: "MOCKUP COLLECTION",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000"
   },
+
   {
-    title: "Material Studies",
-    category: "INSPIRATION",
-    description: "Textures, surfaces, tactile details and material research.",
-    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=900",
     number: "007",
-    type: "MATERIAL ARCHIVE"
+    title: "Material Research",
+    category: "INSPIRATION",
+    description: "Textures, surfaces and material studies.",
+    type: "MATERIAL STUDY",
+    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1000"
   },
+
   {
-    title: "Digital Workspace",
-    category: "TOOLS",
-    description: "Useful tools and resources for creative workflows.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900",
     number: "008",
-    type: "DIGITAL TOOLS"
+    title: "Creative Workspaces",
+    category: "TOOLS",
+    description: "Creative studios, workspaces and tools.",
+    type: "STUDIO REFERENCES",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000"
   },
+
   {
+    number: "009",
     title: "Color & Composition",
     category: "ASSETS",
-    description: "Color palettes and visual compositions for inspiration.",
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900",
-    number: "009",
-    type: "VISUAL RESEARCH"
+    description: "Color palettes and visual compositions.",
+    type: "VISUAL ARCHIVE",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000"
   },
+
   {
+    number: "010",
     title: "Independent Publishing",
     category: "MOCKUPS",
-    description: "Books, magazines and printed editorial objects.",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900",
-    number: "010",
-    type: "PRINT REFERENCE"
+    description: "Books, magazines and printed objects.",
+    type: "PRINT REFERENCES",
+    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1000"
   },
+
   {
+    number: "011",
     title: "Visual Experiments",
     category: "INSPIRATION",
-    description: "Experimental forms, imagery and unexpected combinations.",
-    image: "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=900",
-    number: "011",
-    type: "EXPERIMENTAL"
+    description: "Experimental imagery and unexpected forms.",
+    type: "EXPERIMENTAL",
+    image: "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=1000"
   },
+
   {
-    title: "Creative Studio",
-    category: "TOOLS",
-    description: "Spaces, processes and tools for creative practice.",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=900",
     number: "012",
-    type: "STUDIO NOTES"
+    title: "Digital Resources",
+    category: "TOOLS",
+    description: "Tools and resources for creative workflows.",
+    type: "DIGITAL TOOLS",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000"
   }
+
 ];
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
 
 const grid = document.getElementById("resource-grid");
 const count = document.getElementById("resource-count");
 const searchInput = document.getElementById("resource-search");
+
 const emptyState = document.getElementById("empty-state");
 const clearSearch = document.getElementById("clear-search");
 
@@ -109,15 +133,26 @@ const menuToggle = document.getElementById("menu-toggle");
 
 const filterPanel = document.getElementById("filter-panel");
 const menuPanel = document.getElementById("menu-panel");
-const backdrop = document.getElementById("overlay-backdrop");
+
+const backdrop = document.getElementById("panel-backdrop");
+
+
+/* ==========================================
+   STATE
+========================================== */
 
 let activeCategory = "ALL";
 let searchTerm = "";
-let resizeFrame = null;
 
-/* RESOURCE CARDS */
+let layoutFrame = null;
+
+
+/* ==========================================
+   CREATE RESOURCE CARD
+========================================== */
 
 function createCard(resource) {
+
   const card = document.createElement("article");
   card.className = "resource-card";
 
@@ -125,17 +160,18 @@ function createCard(resource) {
   imageWrap.className = "card-image-wrap";
 
   const image = document.createElement("img");
+
   image.className = "card-image";
   image.src = resource.image;
   image.alt = resource.title;
   image.loading = "lazy";
   image.decoding = "async";
 
-  const number = document.createElement("span");
-  number.className = "card-number";
-  number.textContent = resource.number;
+  image.addEventListener("load", scheduleMasonry);
+  image.addEventListener("error", scheduleMasonry);
 
-  imageWrap.append(image, number);
+  imageWrap.appendChild(image);
+
 
   const info = document.createElement("div");
   info.className = "card-info";
@@ -163,37 +199,58 @@ function createCard(resource) {
   arrow.textContent = "↗";
 
   bottom.append(type, arrow);
-  info.append(category, title, description, bottom);
-  card.append(imageWrap, info);
 
-  image.addEventListener("load", scheduleMasonry);
-  image.addEventListener("error", scheduleMasonry);
+  info.append(
+    category,
+    title,
+    description,
+    bottom
+  );
+
+  card.append(
+    imageWrap,
+    info
+  );
 
   return card;
 }
 
-/* FILTERING */
+
+/* ==========================================
+   FILTER RESOURCES
+========================================== */
 
 function getFilteredResources() {
+
   return resources.filter(resource => {
+
     const matchesCategory =
       activeCategory === "ALL" ||
       resource.category === activeCategory;
 
-    const searchableText = [
+    const searchableContent = [
       resource.title,
       resource.category,
       resource.description,
       resource.type
     ].join(" ").toLowerCase();
 
-    const matchesSearch = searchableText.includes(searchTerm);
+    const matchesSearch =
+      searchableContent.includes(searchTerm);
 
     return matchesCategory && matchesSearch;
+
   });
+
 }
 
+
+/* ==========================================
+   RENDER GRID
+========================================== */
+
 function renderResources() {
+
   const filtered = getFilteredResources();
 
   grid.replaceChildren();
@@ -203,18 +260,46 @@ function renderResources() {
   });
 
   count.textContent =
-    `${String(filtered.length).padStart(2, "0")} ITEMS`;
+    `${String(filtered.length).padStart(2, "0")} RESOURCES`;
 
-  emptyState.hidden = filtered.length !== 0;
+  emptyState.hidden = filtered.length > 0;
 
   scheduleMasonry();
+
 }
 
-/* MASONRY LAYOUT */
+
+/* ==========================================
+   MASONRY
+========================================== */
+
+function getColumnCount() {
+
+  if (window.innerWidth <= 600) return 2;
+
+  if (window.innerWidth <= 1000) return 3;
+
+  return 5;
+
+}
+
+
+function getGridGap() {
+
+  if (window.innerWidth <= 600) return 9;
+
+  if (window.innerWidth <= 1000) return 11;
+
+  return 12;
+
+}
 
 
 function layoutMasonry() {
-  const cards = Array.from(grid.querySelectorAll(".resource-card"));
+
+  const cards = Array.from(
+    grid.querySelectorAll(".resource-card")
+  );
 
   if (!cards.length) {
     grid.style.height = "0px";
@@ -222,34 +307,34 @@ function layoutMasonry() {
   }
 
   const columns = getColumnCount();
-  const gap = window.innerWidth <= 600
-    ? 9
-    : window.innerWidth <= 1000
-      ? 12
-      : window.innerWidth >= 1500
-        ? 16
-        : 13;
+  const gap = getGridGap();
 
-  // Use the actual inner content width, excluding horizontal padding.
-  const styles = window.getComputedStyle(grid);
-  const paddingLeft = parseFloat(styles.paddingLeft) || 0;
-  const paddingRight = parseFloat(styles.paddingRight) || 0;
+  // One shared horizontal margin for the whole site.
+  const gutter = parseFloat(
+    getComputedStyle(document.documentElement)
+      .getPropertyValue("--gutter")
+  ) || 14;
 
-  const contentWidth =
-    grid.clientWidth - paddingLeft - paddingRight;
+  const availableWidth = grid.clientWidth - gutter * 2;
 
   const columnWidth =
-    (contentWidth - gap * (columns - 1)) / columns;
+    (availableWidth - gap * (columns - 1)) / columns;
 
   const columnHeights = Array(columns).fill(0);
 
+  // Set card dimensions before measuring.
   cards.forEach(card => {
+
     card.style.width = `${columnWidth}px`;
-    card.style.left = `${paddingLeft}px`;
+    card.style.left = `${gutter}px`;
     card.style.top = "0px";
+    card.style.transform = "none";
+
   });
 
+  // Position every card in the shortest column.
   cards.forEach(card => {
+
     const shortestColumn = columnHeights.indexOf(
       Math.min(...columnHeights)
     );
@@ -257,55 +342,108 @@ function layoutMasonry() {
     const x = shortestColumn * (columnWidth + gap);
     const y = columnHeights[shortestColumn];
 
-    card.style.transform = `translate(${x}px, ${y}px)`;
+    card.style.transform =
+      `translate(${x}px, ${y}px)`;
+
     card.classList.add("is-positioned");
 
     columnHeights[shortestColumn] =
       y + card.offsetHeight + gap;
+
   });
 
   grid.style.height =
     `${Math.max(...columnHeights) - gap}px`;
+
 }
 
-/* SEARCH */
+
+function scheduleMasonry() {
+
+  if (layoutFrame) {
+    cancelAnimationFrame(layoutFrame);
+  }
+
+  layoutFrame = requestAnimationFrame(() => {
+
+    layoutMasonry();
+
+    layoutFrame = null;
+
+  });
+
+}
+
+
+/* ==========================================
+   SEARCH
+========================================== */
 
 searchInput.addEventListener("input", event => {
+
   searchTerm = event.target.value.trim().toLowerCase();
+
   renderResources();
+
 });
 
+
 clearSearch.addEventListener("click", () => {
+
   searchInput.value = "";
   searchTerm = "";
   activeCategory = "ALL";
-  updateActiveFilter();
+
+  updateActiveFilters();
   renderResources();
+
 });
 
-/* CATEGORY FILTERS */
 
-function updateActiveFilter() {
+/* ==========================================
+   CATEGORY FILTERS
+========================================== */
+
+function updateActiveFilters() {
+
   document.querySelectorAll(".filter-option").forEach(button => {
-    const isActive = button.dataset.category === activeCategory;
 
-    button.classList.toggle("active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
+    const active =
+      button.dataset.category === activeCategory;
+
+    button.classList.toggle("active", active);
+
+    button.setAttribute(
+      "aria-pressed",
+      String(active)
+    );
+
   });
+
 }
 
+
 document.querySelectorAll(".filter-option").forEach(button => {
+
   button.addEventListener("click", () => {
+
     activeCategory = button.dataset.category;
-    updateActiveFilter();
+
+    updateActiveFilters();
     renderResources();
     closePanels();
+
   });
+
 });
 
-/* PANELS */
+
+/* ==========================================
+   PANELS
+========================================== */
 
 function closePanels() {
+
   filterPanel.classList.remove("visible");
   menuPanel.classList.remove("visible");
   backdrop.classList.remove("visible");
@@ -317,15 +455,19 @@ function closePanels() {
   menuToggle.setAttribute("aria-expanded", "false");
 
   document.body.classList.remove("panel-open");
+
 }
 
+
 function openPanel(panel) {
+
   closePanels();
 
   panel.classList.add("visible");
   backdrop.classList.add("visible");
 
   panel.setAttribute("aria-hidden", "false");
+
   document.body.classList.add("panel-open");
 
   if (panel === filterPanel) {
@@ -335,50 +477,65 @@ function openPanel(panel) {
   if (panel === menuPanel) {
     menuToggle.setAttribute("aria-expanded", "true");
   }
+
 }
 
-filterToggle.addEventListener("click", () => {
-  const isOpen = filterPanel.classList.contains("visible");
 
-  if (isOpen) {
+filterToggle.addEventListener("click", () => {
+
+  if (filterPanel.classList.contains("visible")) {
     closePanels();
   } else {
     openPanel(filterPanel);
   }
+
 });
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = menuPanel.classList.contains("visible");
 
-  if (isOpen) {
+menuToggle.addEventListener("click", () => {
+
+  if (menuPanel.classList.contains("visible")) {
     closePanels();
   } else {
     openPanel(menuPanel);
   }
+
 });
+
 
 backdrop.addEventListener("click", closePanels);
 
+
 document.querySelectorAll("[data-close]").forEach(button => {
+
   button.addEventListener("click", closePanels);
+
 });
 
+
 document.addEventListener("keydown", event => {
+
   if (event.key === "Escape") {
     closePanels();
   }
+
 });
 
-/* MENU SHORTCUT */
 
-document.getElementById("menu-all").addEventListener("click", event => {
+/* ==========================================
+   MENU HOME
+========================================== */
+
+document.getElementById("menu-home").addEventListener("click", event => {
+
   event.preventDefault();
 
   activeCategory = "ALL";
   searchTerm = "";
+
   searchInput.value = "";
 
-  updateActiveFilter();
+  updateActiveFilters();
   renderResources();
   closePanels();
 
@@ -386,15 +543,24 @@ document.getElementById("menu-all").addEventListener("click", event => {
     top: 0,
     behavior: "smooth"
   });
+
 });
 
-/* RESPONSIVE REFRESH */
+
+/* ==========================================
+   RESPONSIVE LAYOUT
+========================================== */
 
 window.addEventListener("resize", scheduleMasonry);
 
 window.addEventListener("load", scheduleMasonry);
 
-/* INITIALIZE */
 
-updateActiveFilter();
+/* ==========================================
+   INITIALIZE
+========================================== */
+
+updateActiveFilters();
+
 renderResources();
+
