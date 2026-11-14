@@ -1,6 +1,6 @@
 
 /* =====================================
-   SHOP SYSTEM™ — CONTINUOUS MASONRY
+   SHOP SYSTEM™ — EDITORIAL ARCHIVE
 ===================================== */
 
 * {
@@ -15,10 +15,11 @@ html {
 
 body {
   background: #080808;
-  color: #ededed;
+  color: #e5e5e5;
   font-family: "Courier New", monospace;
   font-size: 10px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -46,32 +47,37 @@ a {
   justify-content: space-between;
   min-height: 48px;
   padding: 0 24px;
-  background: #080808;
-  border-bottom: 1px solid #292929;
+  background: rgba(8, 8, 8, 0.97);
+  border-bottom: 1px solid #242424;
 }
 
 .logo {
   color: #ededed;
-  font-size: 11px;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
   font-weight: bold;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 30px;
 }
 
 nav a,
 .nav-button {
-  color: #999;
+  position: relative;
+  padding: 5px 0;
+  color: #858585;
   background: transparent;
   border: 0;
   font-size: 8px;
-  letter-spacing: 0.08em;
+  font-weight: normal;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease;
 }
 
 nav a:hover,
@@ -94,19 +100,25 @@ main {
 }
 
 h1 {
-  margin-bottom: 8px;
-  font-size: 13px;
+  margin-bottom: 9px;
+  color: #ededed;
+  font-size: 12px;
   font-weight: normal;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-main p {
-  color: #888;
+.intro p {
+  color: #777;
+  font-size: 8px;
+  letter-spacing: 0.025em;
+  line-height: 1.7;
 }
 
 .resource-count {
   color: #777;
-  font-size: 9px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
 }
 
 /* SEARCH AND FILTERS */
@@ -118,8 +130,8 @@ main p {
   gap: 20px;
   padding: 12px 0;
   margin-bottom: 22px;
-  border-top: 1px solid #292929;
-  border-bottom: 1px solid #292929;
+  border-top: 1px solid #242424;
+  border-bottom: 1px solid #242424;
 }
 
 #search {
@@ -129,17 +141,18 @@ main p {
   background: transparent;
   border: 0;
   outline: none;
-  font-size: 9px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
 }
 
 #search::placeholder {
-  color: #777;
+  color: #666;
 }
 
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
 }
 
 .filter {
@@ -147,13 +160,14 @@ main p {
   color: #777;
   background: transparent;
   border: 0;
-  font-size: 9px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
   transition: color 0.2s ease;
 }
 
 .filter:hover,
 .filter.active {
-  color: #fff;
+  color: #eee;
 }
 
 /* CONTINUOUS MASONRY */
@@ -189,23 +203,25 @@ main p {
   width: 100%;
   height: auto;
   object-fit: contain;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 
 .resource-card:hover .resource-image img {
   opacity: 0.78;
 }
 
-/* RESOURCE METADATA */
+/* RESOURCE TYPOGRAPHY */
 
 .resource-meta {
   display: flex;
   justify-content: space-between;
   gap: 8px;
   margin-top: 9px;
-  color: #ddd;
+  color: #c9c9c9;
   font-size: 7px;
-  line-height: 1.5;
+  letter-spacing: 0.055em;
+  line-height: 1.6;
+  text-transform: uppercase;
 }
 
 .resource-meta span:last-child {
@@ -217,12 +233,15 @@ main p {
   margin-top: 5px;
   color: #777;
   font-size: 7px;
-  line-height: 1.6;
+  letter-spacing: 0.015em;
+  line-height: 1.7;
 }
 
 .empty-state {
   padding: 40px 0;
   color: #888;
+  font-size: 8px;
+  letter-spacing: 0.1em;
 }
 
 /* FILTER AND MENU PANELS */
@@ -246,16 +265,19 @@ main p {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
-  border-bottom: 1px solid #292929;
-  color: #ededed;
+  border-bottom: 1px solid #242424;
+  color: #ddd;
+  font-size: 8px;
+  letter-spacing: 0.12em;
 }
 
 .overlay-header button,
 .close-button {
-  color: #aaa;
+  color: #888;
   background: transparent;
   border: 0;
-  font-size: 10px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
 }
 
 .overlay-header button:hover,
@@ -273,21 +295,22 @@ main p {
 }
 
 .taxonomy h3 {
-  margin-bottom: 16px;
-  color: #777;
+  margin-bottom: 18px;
+  color: #666;
   font-size: 8px;
   font-weight: normal;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
 }
 
 .taxonomy button,
 .taxonomy p {
   display: block;
-  margin-bottom: 12px;
-  color: #aaa;
+  margin-bottom: 13px;
+  color: #999;
   background: transparent;
   border: 0;
-  font-size: 9px;
+  font-size: 8px;
+  letter-spacing: 0.06em;
   text-align: left;
 }
 
@@ -302,13 +325,15 @@ main p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 18px;
-  padding-top: 28px;
+  gap: 20px;
+  padding-top: 30px;
 }
 
 .menu-content a {
-  color: #aaa;
-  font-size: 11px;
+  color: #999;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  transition: color 0.2s ease;
 }
 
 .menu-content a:hover {
@@ -332,7 +357,7 @@ main p {
   }
 
   nav {
-    gap: 14px;
+    gap: 16px;
   }
 
   main {
