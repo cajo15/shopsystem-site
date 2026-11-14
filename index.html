@@ -12,18 +12,69 @@
 
   <header class="header">
     <a href="index.html" class="logo">SHOP SYSTEM™</a>
+
     <nav>
-      <a href="#assets">ASSETS</a>
-      <a href="#fonts">FONTS</a>
-      <a href="#mockups">MOCKUPS</a>
+      <button class="nav-button" id="filter-toggle">FILTER</button>
+      <button class="nav-button" id="menu-toggle">MENU</button>
       <a href="#info">INFO</a>
     </nav>
   </header>
 
-  <main id="app">
-    <h1>DESIGN RESOURCES</h1>
-    <p>Independent resources for creative people.</p>
-  </main>
+  <main id="app"></main>
+
+  <section class="overlay" id="filter-panel">
+    <div class="overlay-header">
+      <span>FILTER / TAXONOMY</span>
+      <button class="close-button" data-close="filter-panel">CLOSE ×</button>
+    </div>
+
+    <div class="taxonomy">
+      <div>
+        <h3>CATEGORY</h3>
+        <button data-taxonomy="ALL">ALL</button>
+        <button data-taxonomy="ASSETS">ASSETS</button>
+        <button data-taxonomy="FONTS">FONTS</button>
+        <button data-taxonomy="MOCKUPS">MOCKUPS</button>
+      </div>
+
+      <div>
+        <h3>FORMAT</h3>
+        <p>PHOTOGRAPHY</p>
+        <p>GRAPHIC DESIGN</p>
+        <p>TYPOGRAPHY</p>
+        <p>3D / OBJECTS</p>
+      </div>
+
+      <div>
+        <h3>TYPE</h3>
+        <p>FREE</p>
+        <p>PAID</p>
+        <p>CURATED</p>
+      </div>
+
+      <div>
+        <h3>PLATFORM</h3>
+        <p>WEB</p>
+        <p>PRINT</p>
+        <p>DIGITAL</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="overlay menu-panel" id="menu-panel">
+    <div class="overlay-header">
+      <span>SHOP SYSTEM™ / MENU</span>
+      <button class="close-button" data-close="menu-panel">CLOSE ×</button>
+    </div>
+
+    <div class="menu-content">
+      <a href="index.html">HOME</a>
+      <a href="#assets">ASSETS</a>
+      <a href="#fonts">FONTS</a>
+      <a href="#mockups">MOCKUPS</a>
+      <a href="#info">INFO</a>
+    </div>
+  </section>
 
   <script src="app.js"></script>
 </body>
