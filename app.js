@@ -123,3 +123,57 @@ filterButtons.forEach(button => {
 });
 
 renderResources();
+
+
+
+
+// OPEN AND CLOSE PANELS
+
+const filterToggle = document.querySelector("#filter-toggle");
+const menuToggle = document.querySelector("#menu-toggle");
+const filterPanel = document.querySelector("#filter-panel");
+const menuPanel = document.querySelector("#menu-panel");
+
+function closePanels() {
+  filterPanel.classList.remove("visible");
+  menuPanel.classList.remove("visible");
+}
+
+filterToggle.addEventListener("click", () => {
+  menuPanel.classList.remove("visible");
+  filterPanel.classList.toggle("visible");
+});
+
+menuToggle.addEventListener("click", () => {
+  filterPanel.classList.remove("visible");
+  menuPanel.classList.toggle("visible");
+});
+
+document.querySelectorAll("[data-close]").forEach(button => {
+  button.addEventListener("click", closePanels);
+});
+
+// TAXONOMY FILTERS
+
+document.querySelectorAll("[data-taxonomy]").forEach(button => {
+  button.addEventListener("click", () => {
+    activeCategory = button.dataset.taxonomy;
+
+    filterButtons.forEach(item => {
+      item.classList.toggle(
+        "active",
+        item.dataset.category === activeCategory
+      );
+    });
+
+    closePanels();
+    renderResources();
+  });
+});
+
+// ESCAPE KEY CLOSES PANELS
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closePanels();
+});
+
