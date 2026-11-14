@@ -162,8 +162,8 @@ main p {
   column-gap: 14px;
   row-gap: 30px;
   width: 100%;
-  align-items: start;
   margin: 0 auto;
+  align-items: start;
 }
 
 .resource-card {
@@ -188,6 +188,8 @@ main p {
   opacity: 0.78;
 }
 
+/* RESOURCE METADATA */
+
 .resource-meta {
   display: flex;
   justify-content: space-between;
@@ -206,7 +208,7 @@ main p {
 .resource-card p {
   margin-top: 5px;
   color: #777;
-  font-size: 8px;
+  font-size: 7px;
   line-height: 1.6;
 }
 
