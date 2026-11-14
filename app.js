@@ -5,7 +5,6 @@
 ========================================== */
 
 const resources = [
-
   {
     number: "001",
     title: "Editorial Photography",
@@ -14,7 +13,6 @@ const resources = [
     type: "IMAGE COLLECTION",
     image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1000"
   },
-
   {
     number: "002",
     title: "Typography Studies",
@@ -23,7 +21,6 @@ const resources = [
     type: "TYPE REFERENCE",
     image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1000"
   },
-
   {
     number: "003",
     title: "Everyday Objects",
@@ -32,7 +29,6 @@ const resources = [
     type: "OBJECT ARCHIVE",
     image: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=1000"
   },
-
   {
     number: "004",
     title: "Art Direction",
@@ -41,7 +37,6 @@ const resources = [
     type: "VISUAL RESEARCH",
     image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=1000"
   },
-
   {
     number: "005",
     title: "Graphic Inspiration",
@@ -50,7 +45,6 @@ const resources = [
     type: "DESIGN REFERENCES",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000"
   },
-
   {
     number: "006",
     title: "Stationery Mockups",
@@ -59,7 +53,6 @@ const resources = [
     type: "MOCKUP COLLECTION",
     image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000"
   },
-
   {
     number: "007",
     title: "Material Research",
@@ -68,7 +61,6 @@ const resources = [
     type: "MATERIAL STUDY",
     image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1000"
   },
-
   {
     number: "008",
     title: "Creative Workspaces",
@@ -77,7 +69,6 @@ const resources = [
     type: "STUDIO REFERENCES",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000"
   },
-
   {
     number: "009",
     title: "Color & Composition",
@@ -86,7 +77,6 @@ const resources = [
     type: "VISUAL ARCHIVE",
     image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000"
   },
-
   {
     number: "010",
     title: "Independent Publishing",
@@ -95,7 +85,6 @@ const resources = [
     type: "PRINT REFERENCES",
     image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1000"
   },
-
   {
     number: "011",
     title: "Visual Experiments",
@@ -104,7 +93,6 @@ const resources = [
     type: "EXPERIMENTAL",
     image: "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=1000"
   },
-
   {
     number: "012",
     title: "Digital Resources",
@@ -113,7 +101,6 @@ const resources = [
     type: "DIGITAL TOOLS",
     image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000"
   }
-
 ];
 
 
@@ -152,7 +139,6 @@ let layoutFrame = null;
 ========================================== */
 
 function createCard(resource) {
-
   const card = document.createElement("article");
   card.className = "resource-card";
 
@@ -164,14 +150,16 @@ function createCard(resource) {
   image.className = "card-image";
   image.src = resource.image;
   image.alt = resource.title;
-  image.loading = "lazy";
+
+  // Load images immediately so masonry can measure
+  // every card before calculating its position.
+  image.loading = "eager";
   image.decoding = "async";
 
   image.addEventListener("load", scheduleMasonry);
   image.addEventListener("error", scheduleMasonry);
 
   imageWrap.appendChild(image);
-
 
   const info = document.createElement("div");
   info.className = "card-info";
@@ -200,19 +188,45 @@ function createCard(resource) {
 
   bottom.append(type, arrow);
 
-  info.append(
-    category,
-    title,
-    description,
-    bottom
-  );
+  info.append(category, title, description, bottom);
 
-  card.append(
-    imageWrap,
-    info
-  );
+  card.append(imageWrap, info);
 
   return card;
+}
+
+
+/* ==========================================
+   WAIT FOR ALL IMAGES
+========================================== */
+
+async function waitForImages() {
+  const images = Array.from(grid.querySelectorAll(".card-image"));
+
+  await Promise.all(
+    images.map(image => {
+      return new Promise(resolve => {
+        if (image.complete) {
+          resolve();
+          return;
+        }
+
+        image.addEventListener("load", resolve, { once: true });
+        image.addEventListener("error", resolve, { once: true });
+      });
+    })
+  );
+
+  // Allow the browser to finish decoding image dimensions.
+  await Promise.all(
+    images.map(image => {
+      if (typeof image.decode !== "function") {
+        return Promise.resolve();
+      }
+
+      return image.decode().catch(() => {});
+    })
+  );
 }
 
 
@@ -221,9 +235,7 @@ function createCard(resource) {
 ========================================== */
 
 function getFilteredResources() {
-
   return resources.filter(resource => {
-
     const matchesCategory =
       activeCategory === "ALL" ||
       resource.category === activeCategory;
@@ -239,9 +251,7 @@ function getFilteredResources() {
       searchableContent.includes(searchTerm);
 
     return matchesCategory && matchesSearch;
-
   });
-
 }
 
 
@@ -249,11 +259,11 @@ function getFilteredResources() {
    RENDER GRID
 ========================================== */
 
-function renderResources() {
-
+async function renderResources() {
   const filtered = getFilteredResources();
 
   grid.replaceChildren();
+  grid.style.height = "0px";
 
   filtered.forEach(resource => {
     grid.appendChild(createCard(resource));
@@ -264,39 +274,31 @@ function renderResources() {
 
   emptyState.hidden = filtered.length > 0;
 
-  scheduleMasonry();
+  await waitForImages();
 
+  scheduleMasonry();
 }
 
 
 /* ==========================================
-   MASONRY
+   MASONRY LAYOUT
 ========================================== */
 
 function getColumnCount() {
-
   if (window.innerWidth <= 600) return 2;
-
   if (window.innerWidth <= 1000) return 3;
-
   return 5;
-
 }
 
 
 function getGridGap() {
-
   if (window.innerWidth <= 600) return 9;
-
   if (window.innerWidth <= 1000) return 11;
-
   return 12;
-
 }
 
 
 function layoutMasonry() {
-
   const cards = Array.from(
     grid.querySelectorAll(".resource-card")
   );
@@ -309,32 +311,37 @@ function layoutMasonry() {
   const columns = getColumnCount();
   const gap = getGridGap();
 
-  // One shared horizontal margin for the whole site.
-  const gutter = parseFloat(
-    getComputedStyle(document.documentElement)
-      .getPropertyValue("--gutter")
-  ) || 14;
+  const gutter =
+    parseFloat(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--gutter")
+    ) || 14;
 
-  const availableWidth = grid.clientWidth - gutter * 2;
+  const gridWidth = grid.clientWidth;
+
+  if (!gridWidth) return;
+
+  const availableWidth = gridWidth - gutter * 2;
 
   const columnWidth =
     (availableWidth - gap * (columns - 1)) / columns;
 
   const columnHeights = Array(columns).fill(0);
 
-  // Set card dimensions before measuring.
+  // Set all card widths before measuring their heights.
   cards.forEach(card => {
-
+    card.style.position = "absolute";
     card.style.width = `${columnWidth}px`;
     card.style.left = `${gutter}px`;
     card.style.top = "0px";
     card.style.transform = "none";
-
   });
 
-  // Position every card in the shortest column.
-  cards.forEach(card => {
+  // Force the browser to calculate the new dimensions.
+  grid.getBoundingClientRect();
 
+  // Place each card in the currently shortest column.
+  cards.forEach(card => {
     const shortestColumn = columnHeights.indexOf(
       Math.min(...columnHeights)
     );
@@ -342,36 +349,29 @@ function layoutMasonry() {
     const x = shortestColumn * (columnWidth + gap);
     const y = columnHeights[shortestColumn];
 
-    card.style.transform =
-      `translate(${x}px, ${y}px)`;
+    card.style.transform = `translate(${x}px, ${y}px)`;
 
     card.classList.add("is-positioned");
 
     columnHeights[shortestColumn] =
-      y + card.offsetHeight + gap;
-
+      y + card.getBoundingClientRect().height + gap;
   });
 
-  grid.style.height =
-    `${Math.max(...columnHeights) - gap}px`;
+  const tallestColumn = Math.max(...columnHeights);
 
+  grid.style.height = `${Math.max(0, tallestColumn - gap)}px`;
 }
 
 
 function scheduleMasonry() {
-
   if (layoutFrame) {
     cancelAnimationFrame(layoutFrame);
   }
 
   layoutFrame = requestAnimationFrame(() => {
-
     layoutMasonry();
-
     layoutFrame = null;
-
   });
-
 }
 
 
@@ -380,23 +380,18 @@ function scheduleMasonry() {
 ========================================== */
 
 searchInput.addEventListener("input", event => {
-
   searchTerm = event.target.value.trim().toLowerCase();
-
   renderResources();
-
 });
 
 
 clearSearch.addEventListener("click", () => {
-
   searchInput.value = "";
   searchTerm = "";
   activeCategory = "ALL";
 
   updateActiveFilters();
   renderResources();
-
 });
 
 
@@ -405,9 +400,7 @@ clearSearch.addEventListener("click", () => {
 ========================================== */
 
 function updateActiveFilters() {
-
   document.querySelectorAll(".filter-option").forEach(button => {
-
     const active =
       button.dataset.category === activeCategory;
 
@@ -417,24 +410,18 @@ function updateActiveFilters() {
       "aria-pressed",
       String(active)
     );
-
   });
-
 }
 
 
 document.querySelectorAll(".filter-option").forEach(button => {
-
   button.addEventListener("click", () => {
-
     activeCategory = button.dataset.category;
 
     updateActiveFilters();
     renderResources();
     closePanels();
-
   });
-
 });
 
 
@@ -443,7 +430,6 @@ document.querySelectorAll(".filter-option").forEach(button => {
 ========================================== */
 
 function closePanels() {
-
   filterPanel.classList.remove("visible");
   menuPanel.classList.remove("visible");
   backdrop.classList.remove("visible");
@@ -455,12 +441,10 @@ function closePanels() {
   menuToggle.setAttribute("aria-expanded", "false");
 
   document.body.classList.remove("panel-open");
-
 }
 
 
 function openPanel(panel) {
-
   closePanels();
 
   panel.classList.add("visible");
@@ -477,29 +461,24 @@ function openPanel(panel) {
   if (panel === menuPanel) {
     menuToggle.setAttribute("aria-expanded", "true");
   }
-
 }
 
 
 filterToggle.addEventListener("click", () => {
-
   if (filterPanel.classList.contains("visible")) {
     closePanels();
   } else {
     openPanel(filterPanel);
   }
-
 });
 
 
 menuToggle.addEventListener("click", () => {
-
   if (menuPanel.classList.contains("visible")) {
     closePanels();
   } else {
     openPanel(menuPanel);
   }
-
 });
 
 
@@ -507,18 +486,14 @@ backdrop.addEventListener("click", closePanels);
 
 
 document.querySelectorAll("[data-close]").forEach(button => {
-
   button.addEventListener("click", closePanels);
-
 });
 
 
 document.addEventListener("keydown", event => {
-
   if (event.key === "Escape") {
     closePanels();
   }
-
 });
 
 
@@ -527,7 +502,6 @@ document.addEventListener("keydown", event => {
 ========================================== */
 
 document.getElementById("menu-home").addEventListener("click", event => {
-
   event.preventDefault();
 
   activeCategory = "ALL";
@@ -543,7 +517,6 @@ document.getElementById("menu-home").addEventListener("click", event => {
     top: 0,
     behavior: "smooth"
   });
-
 });
 
 
@@ -561,6 +534,4 @@ window.addEventListener("load", scheduleMasonry);
 ========================================== */
 
 updateActiveFilters();
-
 renderResources();
-
